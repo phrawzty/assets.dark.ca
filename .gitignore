@@ -1,0 +1,5 @@
+/files/
+/preservation/
+/releases/
+__pycache__/
+*.part
