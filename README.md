@@ -4,12 +4,25 @@ PDFs, slide images and headshots for [Daniel Maher's speaking portfolio](https:/
 
 ## Contents
 
-- `files/pdfs/`: full-quality PDFs with readable date/title/event filenames. Identical PDFs are shared; revised PDFs receive readable version suffixes.
-- `files/decks/`: individual slide images, grouped by immutable deck version. The directory hashes identify content versions; they are not the public PDF names.
-- `files/speaker/`: publication headshots.
+- `files/decks/<date-title-event>/`: one deck version, containing `<date-title-event>.pdf` and numbered images in `slides/`.
+- `files/speaker/`: publication headshots named `daniel-maher-headshot-1.jpg`, etc.
 - `preservation-manifest.json` and `scripts/preservation.py`: the manifest and restore/verify tool for the separate migration backup.
 - `preservation/`: ignored local migration material. **It is not committed.**
 - `releases/`: ignored scratch directory for backup packaging.
+
+## Deck folders
+
+```text
+files/decks/2018-06-01-serverless-revealed-dotscale-2018/
+  2018-06-01-serverless-revealed-dotscale-2018.pdf
+  slides/
+    001.jpg
+    002.jpg
+```
+
+A repeat with unchanged assets shares the folder. New versions receive readable date/event names or a `-v2` suffix for the same event. Renaming a talk later does not rename its existing assets. Entries without a PDF contain only `slides/`. Display descriptions, slide titles and transcripts live in the portfolio and can differ between appearances sharing one binary bundle.
+
+The import contains 61 bundle folders: 57 with a PDF and four image-only. There are 56 distinct PDF files by content; one PDF has two distinct image exports and therefore appears in two version folders. Git stores those identical PDF bytes once. The layout reorganization reused all existing binary Git objects without regenerating files.
 
 ## Use with the portfolio
 
