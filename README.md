@@ -16,12 +16,12 @@ Add and replace slides from the portfolio checkout:
 uv run portfolio
 ```
 
-After marking an appearance ready, commit and push its assets:
+Publish from the portfolio checkout:
 
 ```sh
-uv run portfolio assets publish
+uv run portfolio publish
 ```
 
-This commits only files referenced by published content, pushes this repository and updates the portfolio’s `data/assets-lock.json`. Commit that lock file with the portfolio changes.
+The portfolio detects whether referenced assets changed. When necessary it commits and pushes those files here, updates `data/assets-lock.json`, verifies the production build and then pushes the portfolio. No routine Git work is needed in this repository.
 
 Keep assets commits referenced by the portfolio available.
